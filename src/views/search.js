@@ -22,7 +22,7 @@ var SearchView = Backbone.View.extend({
       this.search();
     }
     console.log(this.timer);
-    while(!this.timer) {
+    while (!this.timer) {
       var searchValue = $('.form-control').val();
       this.collection.search(searchValue);
       this.timer = true;
