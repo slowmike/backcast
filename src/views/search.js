@@ -1,8 +1,14 @@
 var SearchView = Backbone.View.extend({
 
+  timer: false,
+
+  initialize: function() {
+    setInterval(() => this.timer = false, 500);
+  },
+
   events: {
     'click button': 'search',
-    'keyup': 'keyHandler'
+    'keyup input': 'keyHandler'
   },
 
   search: function() {
@@ -14,6 +20,12 @@ var SearchView = Backbone.View.extend({
   keyHandler: function(e) {
     if (e.keyCode === 13) {
       this.search();
+    }
+    console.log(this.timer);
+    while(!this.timer) {
+      var searchValue = $('.form-control').val();
+      this.collection.search(searchValue);
+      this.timer = true;
     }
   },
 
